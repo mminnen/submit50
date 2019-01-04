@@ -1,0 +1,30 @@
+i{% extends "layout.html" %}
+  
+{% block title %}
+    <title>Register - Register yourself.</title>
+{% endblock %}
+
+{% block banner %}
+  <h1>This is CS50w - Project 1</h1>
+  <p>A book review application using Flask</p>
+{% endblock %}
+
+{% block body %}
+    <h2>Please register here</h2>
+    <form action="{{ url_for('register') }}" method="post">
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Username">
+            <input class="form-control" type="text" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Register</button>
+        </div>
+    </form>
+   <p class="text-danger">  {{ message }}  </p>
+   {% if username %}
+   <p class="text-danger">  User {{ username }} has been registered.  </p>
+   {% endif %}
+{% endblock %}
+
+

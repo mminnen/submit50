@@ -1,0 +1,30 @@
+i{% extends "layout.html" %}
+  
+{% block title %}
+    <title>Login - Please login.</title>
+{% endblock %}
+
+{% block banner %}
+  <h1>This is CS50w - Project 1</h1>
+  <p>User login page</p>
+{% endblock %}
+
+{% block body %}
+    <h2>Please login  here</h2>
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Username">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Login</button>
+        </div>
+    </form>
+   <p class="text-danger">  {{ message }}  </p>
+   {% if username %}
+   <p class="text-danger">  You have logged in as  {{ username }}.  </p>
+   {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>CS50 search for books.</title>
+{% endblock %}
+
+{% block banner %}
+  <h1>This is CS50w - Project 1</h1>
+  <p>Book information.</p>
+{% endblock %}
+
+{% block body %}
+      {% if search %}
+      <h2>Book information for ISBN: {{ message }}</h2>
+        <ul>
+          {% for result in results %}
+             <li>{{ result }}</li>
+          {% endfor %}
+        </ul>
+      <ul>
+             <li>Title: {{ book_result[0][2] }}</li>
+             <li>Author: {{ book_result[0][3] }}</li>
+             <li>Year: {{ book_result[0][4]  }}</li>
+      </ul>
+      <h5>The average rating on Goodreads is: {{ good_reads }}.</h5>
+      <br>
+      <p>{{ reviews }}</p> 
+      <form  method="post">
+        <div class="form-group">
+            Rating (between 1 and 5):  <input type="number" name="rating" min="1" max="5" default="0" required>
+            <input class="form-control" type="text" name="comment:" placeholder="Your comments..." required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      {% endif %}
+      {% if not search %}
+      <h2>You are not logged in!</h2>
+      <h5>please login first</h5>
+      {% endif %}
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>CS50 search for books.</title>
+{% endblock %}
+
+{% block banner %}
+  <h1>This is CS50w - Project 1</h1>
+  <p>Search for books.</p>
+{% endblock %}
+
+{% block body %}
+      {% if search %}
+      <h2>Search for books</h2>
+      <h5>Enter (a part of the) the ISBN, Title or Author below:</h5>
+      <form action="{{ url_for('search') }}" method="post">
+        <div class="form-group">
+            <input class="form-control" type="text" name="isbn" placeholder="ISBN">
+            <input class="form-control" type="text" name="title" placeholder="Title">
+            <input class="form-control" type="text" name="author" placeholder="Author">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Search</button>
+        </div>
+      </form>
+      <h2>Search results</h2>
+<!--      <p>{{ results }}</p> -->
+        <ul>
+          {% if not results %}
+              <li> No results to display </li>
+              {% for result in results %}
+                <li>{{ result }}</li>
+             {% endfor %}
+          {% endif %}
+          {% if results %}
+             {% for result in results %}
+                <li><a href=/result/{{ result[1] }}>{{ result }}</a></li>
+             {% endfor %}
+          {% endif %}
+        </ul>
+      {% endif %}
+      {% if not search %}
+         <h2>Search for books</h2>
+         <h5>Welcome, you need to login first.</h5>
+      {% endif %}
+{% endblock %}
+
