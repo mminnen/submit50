@@ -1,4 +1,7 @@
-Flask
-Flask-Session
+flask
+flask-Session
 psycopg2
-SQLAlchemy
+sqlalchemy
+sqlalchemy.orm
+requests
+json

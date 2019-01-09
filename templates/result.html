@@ -20,15 +20,21 @@
       <ul>
              <li>Title: {{ book_result[0][2] }}</li>
              <li>Author: {{ book_result[0][3] }}</li>
-             <li>Year: {{ book_result[0][4]  }}</li>
+             <li>Year: {{ book_result[0][4] }}</li>
       </ul>
       <h5>The average rating on Goodreads is: {{ good_reads }}.</h5>
       <br>
-      <p>{{ reviews }}</p> 
+      <h6>{{ reviews }}</h6>
+      <ul>
+            {% for book_review in book_reviews %}
+             <li>Review from {{ book_review[0] }}: {{ book_review[1] }} - {{book_review[2] }}. </li>
+          {% endfor %}
+        </ul>
+      <br>
       <form  method="post">
         <div class="form-group">
             Rating (between 1 and 5):  <input type="number" name="rating" min="1" max="5" default="0" required>
-            <input class="form-control" type="text" name="comment:" placeholder="Your comments..." required>
+            <input class="form-control" type="text" name="comment" placeholder="Your comments..." required>
         </div>
         <div class="form-group">
             <button class="btn btn-primary">Submit</button>

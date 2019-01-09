@@ -1,6 +1,7 @@
-# Project 1
+# CS50  Web programming Project 1
 
-This submission consists of a website using FLASK.
+This submission consists of a website using FLASK, according to requirements specified in:
+https://docs.cs50.net/web/2018/x/projects/1/project1.html
 
 Persistent information is stored in an internal Postgres DB with three tables:
 - Users
@@ -31,12 +32,12 @@ The tables have been created as follows:
       rating INTEGER NOT NULL,
       comment VARCHAR,
       username_id INTEGER REFERENCES users,
-      books_id INTEGER REFERENCES books
+      isbn_id INTEGER REFERENCES books
   );
 
 The website provides the following functions:
 - Register username and password (username must be unique, enforced in the DB)
 - Login and Logout
-- When logged in use a Search function (/Search)
+- When logged in ability to use a Search function (/search), which provides a combination of results (/results)
 - Leave a review
-- An API function (/API)
+- An API function (/api<isbn>)
